@@ -10,7 +10,7 @@ import LeadIn from "@/components/molecules/LeadIn";
 const PAGE_QUERY = defineQuery(`*[
   _type == "community"
   && defined(slug.current)
-]{_id, name, bgColor, logo, slug}`);
+] | order(name asc){_id, name, bgColor, logo, slug}`);
 
 const { projectId, dataset } = client.config();
 const urlFor = (source) =>
@@ -24,17 +24,17 @@ export default async function IndexPage() {
   return (
     <main className="flex bg-gray-100 min-h-screen flex-col gap-12">
       <LeadIn title="Community List" />
-      <div className="px-16">
+      <div className="px-4 sm:px-16">
         <h5 className="text-xl text-gray-500">{data.length} Results</h5>
         <hr className="my-8 text-gray-300" />
-        <ul className="grid grid-cols-1 gap-10">
+        <ul className="grid grid-cols-1 gap-6 mb-12">
           {data.map((comm) => (
             <li
-              className={`flex shadow-md bg-gray-50 hover:bg-gray-200 flex-row items-center rounded-lg`}
+              className={`flex shadow-md bg-gray-50 hover:bg-gray-200 min-w-full md:min-w-150 mx-auto flex-row items-center rounded-lg`}
               key={comm._id}
             >
               <Link
-                className="w-full flex flex-row  p-4 items-center"
+                className="flex flex-row p-4 items-center"
                 href={`/community/${comm?.slug?.current}`}
               >
                 {comm.logo ? (

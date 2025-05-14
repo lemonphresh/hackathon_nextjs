@@ -17,7 +17,7 @@ const LeadIn = ({ bgColor = "bg-orange-200", title }) => {
   };
 
   return (
-    <div className={`p-16 mb-4 w-full ${bgColor}`}>
+    <div className={`p-6 sm:p-12 mb-4 w-full ${bgColor}`}>
       <h1 className="text-4xl font-bold tracking-tighter">{title}</h1>
       <Button className="my-6" onClick={handleShareClick}>
         Share

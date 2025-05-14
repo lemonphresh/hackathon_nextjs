@@ -42,13 +42,13 @@ export default async function EventPage({ params }) {
     : null;
 
   return (
-    <main className="container bg-gray-100 min-h-screen p-12">
+    <main className="flex container bg-gray-100 min-h-screen flex-col min-w-full p-12 px-5 sm:px-12">
       <div className="mb-6">
         <Link href="/">← Back to community list</Link>
       </div>
       <div
         style={{ backgroundColor: bgColor }}
-        className={`flex flex-row p-5 items-top gap-12 items-center rounded-xl`}
+        className={`flex flex-row p-5 items-top gap-12 mx-auto max-w-600 items-center rounded-xl`}
       >
         {communityLogo && (
           <Image
