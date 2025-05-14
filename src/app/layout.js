@@ -1,4 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+
 import "./globals.css";
 import { SanityLive } from "@/sanity/live";
 import { ToastContainer, ToastProvider } from "@/components/contexts/Toast";
@@ -30,6 +32,7 @@ export default function RootLayout({ children }) {
           {children}
           <SanityLive />
         </ToastProvider>
+        <SpeedInsights />
       </body>
     </html>
   );
