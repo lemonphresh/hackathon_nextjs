@@ -13,6 +13,16 @@ const PAGE_QUERY = defineQuery(`*[
     community->
   }`);
 
+export async function generateMetadata({ params }) {
+  const { data } = await sanityFetch({
+    query: PAGE_QUERY,
+    params: await params,
+  });
+  return {
+    title: `${data.name} Community Page`,
+  };
+}
+
 const { projectId, dataset } = client.config();
 const urlFor = (source) =>
   projectId && dataset
@@ -24,7 +34,7 @@ export default async function EventPage({ params }) {
     query: PAGE_QUERY,
     params: await params,
   });
-  console.log({ data });
+
   const { community } = data;
   const { name, bgColor, logo, type } = community;
   const communityLogo = logo
@@ -32,8 +42,8 @@ export default async function EventPage({ params }) {
     : null;
 
   return (
-    <main className="container mx-auto grid gap-12 p-12">
-      <div className="mb-4">
+    <main className="container bg-gray-100 min-h-screen p-12">
+      <div className="mb-6">
         <Link href="/">← Back to community list</Link>
       </div>
       <div

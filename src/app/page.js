@@ -20,7 +20,7 @@ const urlFor = (source) =>
 
 export default async function IndexPage() {
   const { data } = await sanityFetch({ query: PAGE_QUERY });
-  console.log({ data });
+
   return (
     <main className="flex bg-gray-100 min-h-screen flex-col gap-12">
       <LeadIn title="Community List" />
