@@ -40,13 +40,15 @@ export default async function EventPage({ params }) {
         style={{ backgroundColor: bgColor }}
         className={`grid p-5 items-top gap-12 rounded-xl sm:grid-cols-2`}
       >
-        <Image
-          src={communityLogo || "https://placehold.co/550x310/png"}
-          alt={name || "Logo"}
-          className="mx-auto aspect-square overflow-hidden rounded-xl object-center sm:w-full"
-          height={150}
-          width={150}
-        />
+        {communityLogo ? (
+          <Image
+            src={communityLogo || "https://placehold.co/550x310/png"}
+            alt={name || "Logo"}
+            className="mx-auto aspect-square overflow-hidden rounded-xl object-center sm:w-full"
+            height={150}
+            width={150}
+          />
+        ) : null}
         <div className="flex flex-col justify-center space-y-4">
           <div className="space-y-4">
             {name ? (
