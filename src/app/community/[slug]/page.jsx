@@ -26,7 +26,7 @@ export default async function EventPage({ params }) {
   });
   console.log({ data });
   const { community } = data;
-  const { name, bgColor, logo } = community;
+  const { name, bgColor, logo, type } = community;
   const communityLogo = logo
     ? urlFor(logo)?.width(300).height(300).url()
     : null;
@@ -38,22 +38,27 @@ export default async function EventPage({ params }) {
       </div>
       <div
         style={{ backgroundColor: bgColor }}
-        className={`grid p-5 items-top gap-12 rounded-xl sm:grid-cols-2`}
+        className={`flex flex-row p-5 items-top gap-12 items-center rounded-xl`}
       >
-        {communityLogo ? (
+        {communityLogo && (
           <Image
             src={communityLogo || "https://placehold.co/550x310/png"}
             alt={name || "Logo"}
-            className="mx-auto aspect-square overflow-hidden rounded-xl object-center sm:w-full"
+            className="aspect-square overflow-hidden rounded-xl object-center"
             height={150}
             width={150}
           />
-        ) : null}
-        <div className="flex flex-col justify-center space-y-4">
+        )}
+        <div className="flex flex-col space-y-4">
           <div className="space-y-4">
             {name ? (
               <h1 className="text-4xl font-bold tracking-tighter mb-8">
                 {name}
+              </h1>
+            ) : null}
+            {type ? (
+              <h1 className="text-2xl tracking-tighter mb-8">
+                Community Type: {type}
               </h1>
             ) : null}
           </div>

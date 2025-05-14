@@ -1,0 +1,55 @@
+"use client";
+
+import React from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
+
+const Button = ({
+  variant = "default",
+  children,
+  onClick,
+  className,
+  icon: Icon,
+  circular = false,
+  ...props
+}) => {
+  const buttonClass = classNames(
+    "px-4 py-2 font-semibold focus:outline-none transition-all flex items-center justify-center gap-2",
+    {
+      "bg-[var(--primary)] text-white hover:bg-[var(--primary-hover)] active:bg-[var(--primary-active)]":
+        variant === "default",
+      "bg-[var(--secondary)] text-white hover:bg-[var(--secondary-hover)] active:bg-[var(--secondary-active)]":
+        variant === "secondary",
+      "bg-[var(--danger)] text-white hover:bg-[var(--danger-hover)] active:bg-[var(--danger-active)]":
+        variant === "danger",
+      "bg-[var(--success)] text-white hover:bg-[var(--success-hover)] active:bg-[var(--success-active)]":
+        variant === "success",
+      rounded: !circular,
+      "!rounded-full !p-2": circular,
+    },
+    className
+  );
+
+  return (
+    <button
+      className={buttonClass}
+      onClick={onClick}
+      style={{ cursor: "pointer" }}
+      {...props}
+    >
+      {Icon && <Icon className="w-5 h-5" aria-hidden="true" />}
+      {!circular && children} {/* hide text/children if circular */}
+    </button>
+  );
+};
+
+Button.propTypes = {
+  variant: PropTypes.oneOf(["default", "secondary", "danger", "success"]),
+  children: PropTypes.node,
+  onClick: PropTypes.func,
+  className: PropTypes.string,
+  icon: PropTypes.elementType,
+  circular: PropTypes.bool,
+};
+
+export default Button;

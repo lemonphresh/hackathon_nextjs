@@ -15,3 +15,21 @@
     --background: #0a0a0a;
   }
 }
+
+:root {
+  --primary: #7bb7fb;
+  --primary-hover: #60a5fa;
+  --primary-active: #3b82f6;
+
+  --secondary: #d1d5db;
+  --secondary-hover: #9ca3af;
+  --secondary-active: #6b7280;
+
+  --success: #86efac;
+  --success-hover: #4ade80;
+  --success-active: #22c55e;
+
+  --danger: #fca5a5;
+  --danger-hover: #f87171;
+  --danger-active: #ef4444;
+}
