@@ -1,6 +1,7 @@
 "use client";
 
 import Button from "@/components/atoms/Button";
+import FAQAccordion from "@/components/molecules/FaqAccordions";
 import {
   EnvelopeIcon,
   PhoneIcon,
@@ -15,7 +16,7 @@ export default function LegacySection() {
   const [showCreate, setShowCreate] = useState(false);
 
   return (
-    <div className="mt-6 bg-[#ebf2f1]pb-10 w-full">
+    <div className="mt-6 bg-[#ebf2f1] pb-10 w-full">
       <div className="flex flex-col md:flex-row items-center justify-center w-full px-6 md:px-20 gap-4 py-6 bg-[#ded6bb]">
         <div className="bg-white h-64 w-full max-w-125 rounded-3xl p-6 shadow-md flex flex-col justify-between">
           <div>
@@ -25,6 +26,7 @@ export default function LegacySection() {
             </h2>
           </div>
           <Button
+            variant="gold"
             onClick={() => setShowSignIn(true)}
             className="bg-[#a08449] max-w-fit text-white px-4 py-2 rounded"
           >
@@ -40,6 +42,7 @@ export default function LegacySection() {
             </h2>
           </div>
           <Button
+            variant="gold"
             onClick={() => setShowCreate(true)}
             className="bg-[#a08449] max-w-fit text-white px-4 py-2 rounded"
           >
@@ -58,7 +61,7 @@ export default function LegacySection() {
 
         <div className="flex flex-wrap py-8 gap-6 mb-6">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-[#cbddcc] flex items-center justify-center">
+            <div className="w-12 h-12 rounded-full bg-[#cbddcc] flex items-center justify-center">
               <PhoneIcon className="w-5 h-5 text-[#165C58]" />
             </div>
             <div>
@@ -69,7 +72,7 @@ export default function LegacySection() {
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-[#cbddcc] flex items-center justify-center">
+            <div className="w-12 h-12 rounded-full bg-[#cbddcc] flex items-center justify-center">
               <EnvelopeIcon className="w-5 h-5 text-[#165C58]" />
             </div>
             <div>
@@ -81,75 +84,89 @@ export default function LegacySection() {
           </div>
         </div>
 
-        <div className="space-y-4">
-          {[
-            "How can ObitWriter help me write an Obituary?",
-            "How can I upload a photo?",
-            "Where can I publish an Obituary?",
-          ].map((item, idx) => (
-            <div
-              key={idx}
-              className="border rounded-lg p-4 cursor-pointer hover:bg-gray-50"
-            >
-              <div className="font-medium text-gray-900">{item}</div>
-            </div>
-          ))}
-        </div>
+        <FAQAccordion />
       </div>
 
       {/* side panels, todo: turn into component */}
       {showSignIn && (
         <div className="fixed inset-0 bg-black/30 z-50 flex justify-end">
-          <div className="bg-white w-80 h-full relative p-6 shadow-lg animate-slide-in">
+          <div className="bg-white w-100 h-full relative p-6 shadow-lg animate-slide-in">
             <Button
               onClick={() => setShowSignIn(false)}
               icon={XMarkIcon}
               variant="clear"
               className="absolute top-0 text-sm right-0 mb-4"
-            />
+            />{" "}
+            <UserCircleIcon className="w-14 h-14 text-[#bda56e] mb-2" />
             <h2 className="text-xl font-bold mb-2">Sign In</h2>
+            <p className="text-sm mb-4">
+              Welcome back. Sign in to continue working on the memories of your
+              loved ones. We're here for you any time.
+            </p>
             <input
               placeholder="Email"
               className="w-full mb-3 p-2 border rounded"
             />
-            <input
-              placeholder="Password"
-              type="password"
-              className="w-full mb-3 p-2 border rounded"
-            />
-            <Button className="w-full bg-[#a08449] text-white py-2">
-              Submit
-            </Button>
+            <Button className="w-full text-white py-2 mt-10">Sign In</Button>
+            <div className="inline-block mt-4">
+              <span>Don't have an Account?</span>
+              <Button
+                className="inline w-fit !p-0 mt-1 ml-1"
+                onClick={() => {
+                  setShowSignIn(false);
+                  setShowCreate(true);
+                }}
+                variant="clear"
+              >
+                Create Account
+              </Button>
+            </div>
           </div>
         </div>
       )}
 
       {showCreate && (
         <div className="fixed inset-0 bg-black/30 z-50 flex justify-end">
-          <div className="bg-white w-80 h-full relative p-6 shadow-lg animate-slide-in">
+          <div className="bg-white w-100 h-full relative p-6 shadow-lg animate-slide-in">
             <Button
               onClick={() => setShowCreate(false)}
               icon={XMarkIcon}
               variant="clear"
               className="absolute top-0 right-0 text-sm mb-4"
-            />
+            />{" "}
+            <UserCircleIcon className="w-14 h-14 text-[#bda56e] mb-2" />
             <h2 className="text-xl font-bold mb-2">Create Account</h2>
+            <p className="text-sm mb-4">
+              Save your progress, edit later, and share with others.
+            </p>
             <input
-              placeholder="Full Name"
+              placeholder="Your email address"
+              type="email"
               className="w-full mb-3 p-2 border rounded"
             />
             <input
-              placeholder="Email"
+              placeholder="Confirm your email address"
+              type="email"
               className="w-full mb-3 p-2 border rounded"
             />
-            <input
-              placeholder="Password"
-              type="password"
-              className="w-full mb-3 p-2 border rounded"
-            />
-            <Button className="w-full bg-[#a08449] text-white py-2 ">
-              Register
-            </Button>
+            <Button className="text-white py-2 mt-10">Create Account</Button>
+            <div className="inline-block mt-4">
+              <span>Already have an account?</span>
+              <Button
+                className="inline w-fit !p-0 mt-1 ml-1"
+                onClick={() => {
+                  setShowCreate(false);
+                  setShowSignIn(true);
+                }}
+                variant="clear"
+              >
+                Sign In
+              </Button>
+            </div>
+            <p className="text-sm text-gray-500 mt-4">
+              By clicking "Create Account", you agree to our Terms of Use and
+              Privacy Statement.
+            </p>
           </div>
         </div>
       )}

@@ -25,7 +25,10 @@ const ObitWriterForm = () => {
   };
 
   return (
-    <div className="px-4 sm:px-6 py-8 w-full max-w-250 space-y-6">
+    <div className="px-4 sm:px-6 py-8 w-full max-w-250 space-y-3">
+      <div className="text-sm font-semibold text-gray-500 uppercase tracking-wide">
+        Obit Writer
+      </div>
       <h1 className="text-2xl font-semibold mb-6">
         Tell us about your loved one
       </h1>

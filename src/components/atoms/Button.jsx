@@ -25,6 +25,8 @@ const Button = ({
         variant === "danger",
       "bg-[var(--success)] text-white hover:bg-[var(--success-hover)] active:bg-[var(--success-active)]":
         variant === "success",
+      "bg-[var(--gold)] text-white hover:bg-[var(--gold-hover)] active:bg-[var(--gold-active)]":
+        variant === "gold",
       "bg-transparent text-inherit hover:bg-transparent active:bg-transparent":
         variant === "clear",
       rounded: !circular,
@@ -58,6 +60,7 @@ Button.propTypes = {
     "secondary",
     "danger",
     "success",
+    "gold",
     "clear",
   ]),
   children: PropTypes.node,

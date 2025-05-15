@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="bg-[#f9f6ef] text-center text-sm text-gray-700 py-10 mt-16">
+    <footer className="bg-[#f9f6ef] text-center text-sm text-gray-700 py-10">
       <div className="flex justify-center gap-4 flex-wrap text-[#006699] font-medium mb-4">
         <a href="#" className="hover:underline">
           Contact Us
