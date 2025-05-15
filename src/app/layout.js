@@ -6,6 +6,7 @@ import { SanityLive } from "@/sanity/live";
 import { ToastContainer, ToastProvider } from "@/components/contexts/Toast";
 import Navbar from "@/components/organisms/Navbar/Navbar";
 import { ObitWriterProvider } from "@/components/contexts/ObitWriter";
+import Footer from "@/components/molecules/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -55,6 +56,7 @@ export default function RootLayout({ children }) {
             <Navbar />
             <ToastContainer />
             {children}
+            <Footer />
             <SanityLive />
           </ToastProvider>
         </ObitWriterProvider>

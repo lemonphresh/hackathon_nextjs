@@ -25,8 +25,11 @@ const Button = ({
         variant === "danger",
       "bg-[var(--success)] text-white hover:bg-[var(--success-hover)] active:bg-[var(--success-active)]":
         variant === "success",
+      "bg-transparent text-inherit hover:bg-transparent active:bg-transparent":
+        variant === "clear",
       rounded: !circular,
-      "!rounded-full !p-2": circular,
+      "!rounded-full": circular,
+      "!p-2": circular && !children,
     },
     className
   );
@@ -50,7 +53,13 @@ const Button = ({
 };
 
 Button.propTypes = {
-  variant: PropTypes.oneOf(["default", "secondary", "danger", "success"]),
+  variant: PropTypes.oneOf([
+    "default",
+    "secondary",
+    "danger",
+    "success",
+    "clear",
+  ]),
   children: PropTypes.node,
   onClick: PropTypes.func,
   className: PropTypes.string,

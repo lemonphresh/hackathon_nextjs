@@ -9,6 +9,11 @@ export const ObitWriterProvider = ({ children }) => {
     lastName: "",
     dateOfDeath: "",
     obituary: "",
+    age: "",
+    stateOfDeath: "",
+    cityOfDeath: "",
+    countryOfDeath: "",
+    hasService: "",
   });
 
   const updateFormData = (name, value) => {

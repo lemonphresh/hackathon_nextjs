@@ -2,9 +2,8 @@
 import React from "react";
 import Button from "../atoms/Button";
 import { useToast } from "../contexts/Toast";
-import Link from "next/link";
 
-const LeadIn = ({ bgColor = "bg-orange-200", title }) => {
+const LeadIn = ({ bgColor, bgImage, enableShare = true, title }) => {
   const { addToast } = useToast();
   const handleShareClick = () => {
     navigator.clipboard
@@ -17,13 +16,25 @@ const LeadIn = ({ bgColor = "bg-orange-200", title }) => {
       });
   };
 
+  const backgroundStyle = bgImage
+    ? {
+        backgroundImage: `url(${bgImage})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }
+    : {};
+
   return (
-    <div className={`p-6 sm:p-12 mb-4 w-full ${bgColor}`}>
+    <div
+      className={`p-6 sm:p-12 mb-4 w-full ${bgColor}`}
+      style={backgroundStyle}
+    >
       <h1 className="text-4xl font-bold tracking-tighter">{title}</h1>
-      <Button className="my-6" onClick={handleShareClick}>
-        Share
-      </Button>
-      <Link href="/obitwriter/obituary">Obit Writer</Link>
+      {enableShare && (
+        <Button className="my-6" onClick={handleShareClick}>
+          Share
+        </Button>
+      )}
     </div>
   );
 };
