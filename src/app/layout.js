@@ -5,6 +5,7 @@ import "./globals.css";
 import { SanityLive } from "@/sanity/live";
 import { ToastContainer, ToastProvider } from "@/components/contexts/Toast";
 import Navbar from "@/components/organisms/Navbar/Navbar";
+import { ObitWriterProvider } from "@/components/contexts/ObitWriter";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -49,12 +50,14 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased text-gray-800`}
       >
-        <ToastProvider>
-          <Navbar />
-          <ToastContainer />
-          {children}
-          <SanityLive />
-        </ToastProvider>
+        <ObitWriterProvider>
+          <ToastProvider>
+            <Navbar />
+            <ToastContainer />
+            {children}
+            <SanityLive />
+          </ToastProvider>
+        </ObitWriterProvider>
         <SpeedInsights />
       </body>
     </html>

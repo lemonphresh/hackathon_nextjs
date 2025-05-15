@@ -10,7 +10,8 @@ const Button = ({
   onClick,
   className,
   icon: Icon,
-  circular = false,
+  circular = true,
+  iconPosition = "left",
   ...props
 }) => {
   const buttonClass = classNames(
@@ -18,7 +19,7 @@ const Button = ({
     {
       "bg-[var(--primary)] text-white hover:bg-[var(--primary-hover)] active:bg-[var(--primary-active)]":
         variant === "default",
-      "bg-[var(--secondary)] text-white hover:bg-[var(--secondary-hover)] active:bg-[var(--secondary-active)]":
+      "bg-[var(--secondary)] text-gray-700 hover:bg-[var(--secondary-hover)] active:bg-[var(--secondary-active)] border border-gray-800":
         variant === "secondary",
       "bg-[var(--danger)] text-white hover:bg-[var(--danger-hover)] active:bg-[var(--danger-active)]":
         variant === "danger",
@@ -37,8 +38,13 @@ const Button = ({
       style={{ cursor: "pointer" }}
       {...props}
     >
-      {Icon && <Icon className="w-5 h-5" aria-hidden="true" />}
-      {!circular && children} {/* hide text/children if circular */}
+      {iconPosition === "left" && Icon && (
+        <Icon className="w-5 h-5" aria-hidden="true" />
+      )}
+      {children}
+      {iconPosition === "right" && Icon && (
+        <Icon className="w-5 h-5" aria-hidden="true" />
+      )}
     </button>
   );
 };
@@ -50,6 +56,7 @@ Button.propTypes = {
   className: PropTypes.string,
   icon: PropTypes.elementType,
   circular: PropTypes.bool,
+  iconPosition: PropTypes.oneOf(["left", "right"]),
 };
 
 export default Button;

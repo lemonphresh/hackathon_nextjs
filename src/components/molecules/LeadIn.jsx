@@ -2,6 +2,7 @@
 import React from "react";
 import Button from "../atoms/Button";
 import { useToast } from "../contexts/Toast";
+import Link from "next/link";
 
 const LeadIn = ({ bgColor = "bg-orange-200", title }) => {
   const { addToast } = useToast();
@@ -22,6 +23,7 @@ const LeadIn = ({ bgColor = "bg-orange-200", title }) => {
       <Button className="my-6" onClick={handleShareClick}>
         Share
       </Button>
+      <Link href="/obitwriter/obituary">Obit Writer</Link>
     </div>
   );
 };
